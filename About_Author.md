@@ -26,4 +26,4 @@ Aspiring Full Stack Web Developer and Student with a passion for building effici
 ### Connect with Me
 
 - [GitHub](https://github.com/Mahmud-Hasan2024)
-- [LinkedIn](https://linkedin.com/in/mahmud-hasan)
+- [LinkedIn](https://www.linkedin.com/in/mahmud-hasan-2a19892a6/)
