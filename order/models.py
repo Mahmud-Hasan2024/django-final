@@ -29,8 +29,8 @@ class Order(models.Model):
     PENDING = 'Pending'
     SHIPPED = 'Shipped'
     DELIVERED = 'Delivered'
-    STATUS_CHOICES = [(PENDING, 'Pending'), (SHIPPED, 'Shipped'), (DELIVERED, 'Delivered')]
-
+    CANCELED = 'Canceled'
+    STATUS_CHOICES = [(PENDING, 'Pending'), (SHIPPED, 'Shipped'), (DELIVERED, 'Delivered'), (CANCELED, 'Canceled')]
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='orders')
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default=PENDING)
     total_price = models.DecimalField(max_digits=10, decimal_places=2, default=0)
@@ -44,6 +44,7 @@ class OrderItem(models.Model):
     food = models.ForeignKey(FoodItem, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField()
     price = models.DecimalField(max_digits=8, decimal_places=2)
+    total_price = models.DecimalField(max_digits=12, decimal_places=2)
 
     def __str__(self):
-        return f"{self.quantity} * {self.food.name}"
+        return f"{self.quantity} x {self.food.name}"

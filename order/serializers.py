@@ -1,7 +1,10 @@
 from rest_framework import serializers
 from order.models import Cart, CartItem, Order, OrderItem
 from menu.models import FoodItem
+from order.services import OrderService
 
+class EmptySerializer(serializers.Serializer):
+    pass
 
 class SimpleFoodSerializer(serializers.ModelSerializer):
     class Meta:
@@ -82,3 +85,31 @@ class OrderSerializer(serializers.ModelSerializer):
         model = Order
         fields = ['id', 'user', 'status', 'total_price', 'items', 'created_at']
         read_only_fields = ['user', 'total_price', 'created_at']
+
+class CreateOrderSerializer(serializers.Serializer):
+    cart_id = serializers.UUIDField()
+
+    def validate_cart_id(self, cart_id):
+        if not Cart.objects.filter(pk=cart_id).exists():
+            raise serializers.ValidationError('No cart found with this ID.')
+        if not CartItem.objects.filter(cart_id=cart_id).exists():
+            raise serializers.ValidationError('Cart is empty.')
+        return cart_id
+
+    def create(self, validated_data):
+        user_id = self.context['user_id']
+        cart_id = validated_data['cart_id']
+        try:
+            order = OrderService.create_order(user_id=user_id, cart_id=cart_id)
+            return order
+        except ValueError as e:
+            raise serializers.ValidationError(str(e))
+
+    def to_representation(self, instance):
+        return OrderSerializer(instance).data
+    
+
+class UpdateOrderSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Order
+        fields = ['status']
