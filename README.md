@@ -177,4 +177,16 @@ python manage.py test
 4. Push to branch (`git push origin feature/my-feature`)
 5. Open a Pull Request
 
+---
 
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## Author
+
+**Mahmud Hasan**  
+
+Learn more about me in my [About Me](About_Author.md) file.
