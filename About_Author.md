@@ -9,8 +9,10 @@ Aspiring Full Stack Web Developer and Student with a passion for building effici
 - Python
 - Django
 - REST API
+- SQL
 - PostgreSQL
-- Javascript
+- MySQL
+- JavaScript
 - React
 
 ### Education
