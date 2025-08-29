@@ -12,7 +12,7 @@ class FoodItem(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='foods')
     name = models.CharField(max_length=200)
     description = models.TextField(blank=True)
-    image = CloudinaryField('image')
+    image = CloudinaryField('image', blank=True, null=True)
     price = models.DecimalField(max_digits=8, decimal_places=2)
     is_special = models.BooleanField(default=False)
     discount_price = models.DecimalField(max_digits=8, decimal_places=2, blank=True, null=True)
