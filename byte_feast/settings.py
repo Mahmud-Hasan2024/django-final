@@ -92,8 +92,8 @@ TEMPLATES = [
 WSGI_APPLICATION = 'byte_feast.wsgi.app'
 
 CORS_ALLOWED_ORIGINS = [
-    'http://localhost:5173',
-    'http://127.0.0.1:5173'
+    "http://localhost:5173",
+    "http://127.0.0.1:5173"
 ]
 
 
@@ -193,6 +193,9 @@ SIMPLE_JWT = {
 }
 
 DJOSER = {
+    'EMAIL_FRONTEND_PROTOCOL': config('FRONTEND_PROTOCOL'),
+    'EMAIL_FRONTEND_DOMAIN': config('FRONTEND_DOMAIN'),
+    'EMAIL_FRONTEND_SITE_NAME': 'ByteFeast',
     'PASSWORD_RESET_CONFIRM_URL': 'password/reset/confirm/{uid}/{token}',
     'ACTIVATION_URL': 'activate/{uid}/{token}',
     'SEND_ACTIVATION_EMAIL': True,
