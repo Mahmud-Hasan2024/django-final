@@ -2,17 +2,18 @@ from django.db import models
 from cloudinary.models import CloudinaryField
 
 # Create your models here.
+
 class Category(models.Model):
     name = models.CharField(max_length=120)
 
     def __str__(self):
         return self.name
 
+
 class FoodItem(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='foods')
     name = models.CharField(max_length=200)
     description = models.TextField(blank=True)
-    image = CloudinaryField('image', blank=True, null=True)
     price = models.DecimalField(max_digits=8, decimal_places=2)
     is_special = models.BooleanField(default=False)
     discount_price = models.DecimalField(max_digits=8, decimal_places=2, blank=True, null=True)
@@ -26,3 +27,11 @@ class FoodItem(models.Model):
     @property
     def effective_price(self):
         return self.discount_price if self.is_special and self.discount_price else self.price
+
+
+class FoodImage(models.Model):
+    food = models.ForeignKey(FoodItem, on_delete=models.CASCADE, related_name="images")
+    image = CloudinaryField('image')
+
+    def __str__(self):
+        return f"Image for {self.food.name}"
