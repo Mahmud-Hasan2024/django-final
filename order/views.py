@@ -17,6 +17,7 @@ from sslcommerz_lib import SSLCOMMERZ
 from django.conf import settings as main_settings
 from django.http import HttpResponseRedirect
 from rest_framework.decorators import api_view
+from rest_framework.permissions import AllowAny
 
 
 # Create your views here.
@@ -156,23 +157,57 @@ def initiate_payment(request):
         return Response({"payment_url": response['GatewayPageURL']})
     return Response({"error": "Payment initiation failed"}, status=status.HTTP_400_BAD_REQUEST)
 
-
+# Payment Success
 @api_view(['POST'])
+@permission_classes([AllowAny])
 def payment_success(request):
-    print("Inside success")
-    order_id = request.data.get("tran_id").split('_')[1]
-    order = Order.objects.get(id=order_id)
+    tran_id = request.data.get("tran_id")
+    amount = request.data.get("amount")
+    if not tran_id:
+        return Response({"error": "tran_id not provided"}, status=400)
+
+    order_id = tran_id.split("_")[1]
+
+    try:
+        order = Order.objects.get(id=order_id)
+    except Order.DoesNotExist:
+        return Response({"error": "Order not found"}, status=404)
+
     order.status = Order.PENDING
     order.save()
+
     return HttpResponseRedirect(f"{main_settings.FRONTEND_URL}/dashboard/orders/")
 
-
+# Payment Cancel
 @api_view(['POST'])
+@permission_classes([AllowAny])
 def payment_cancel(request):
+    tran_id = request.data.get("tran_id")
+    order_id = tran_id.split("_")[1] if tran_id else None
+
+    if order_id:
+        try:
+            order = Order.objects.get(id=order_id)
+            order.status = Order.CANCELED
+            order.save()
+        except Order.DoesNotExist:
+            pass
+
     return HttpResponseRedirect(f"{main_settings.FRONTEND_URL}/dashboard/orders/")
 
-
+# Payment Fail
 @api_view(['POST'])
+@permission_classes([AllowAny])
 def payment_fail(request):
-    print("Inside fail")
+    tran_id = request.data.get("tran_id")
+    order_id = tran_id.split("_")[1] if tran_id else None
+
+    if order_id:
+        try:
+            order = Order.objects.get(id=order_id)
+            order.status = Order.NOT_PAID
+            order.save()
+        except Order.DoesNotExist:
+            pass
+
     return HttpResponseRedirect(f"{main_settings.FRONTEND_URL}/dashboard/orders/")
