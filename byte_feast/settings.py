@@ -216,11 +216,6 @@ SWAGGER_SETTINGS = {
     }
 }
 
-CSRF_TRUSTED_ORIGINS = [
-    "http://localhost:5173",
-    "https://bytefeast-resturant-django-rest-api.vercel.app",
-]
-
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
