@@ -4,12 +4,14 @@ from menu.views import CategoryViewSet, FoodItemViewSet
 from order.views import CartViewSet, CartItemViewSet, OrderViewSet, initiate_payment, payment_success, payment_fail, payment_cancel
 from reviews.views import ReviewViewSet
 from analytics.views import dashboard_stats
+from menu.views import FoodImageViewSet
 
 router = routers.DefaultRouter()
 router.register('categories', CategoryViewSet, basename='categories')
 router.register('foods', FoodItemViewSet, basename='foods')
 router.register('carts', CartViewSet, basename='carts')
 router.register('orders', OrderViewSet, basename='orders')
+router.register('food-images', FoodImageViewSet, basename='food-images')
 
 food_router = routers.NestedDefaultRouter(router, 'foods', lookup='food')
 food_router.register('reviews', ReviewViewSet, basename='food-reviews')

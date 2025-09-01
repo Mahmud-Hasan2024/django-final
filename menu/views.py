@@ -8,6 +8,9 @@ from menu.serializers import FoodItemSerializer, CategorySerializer
 from menu.filters import FoodFilter
 from menu.paginations import DefaultPagination
 from api.permissions import IsAdminOrReadOnly
+from rest_framework import viewsets, permissions
+from menu.models import FoodImage
+from menu.serializers import FoodImageUploadSerializer
 
 # Create your views here.
 
@@ -35,6 +38,12 @@ class FoodItemViewSet(ModelViewSet):
     )
     def create(self, request, *args, **kwargs):
         return super().create(request, *args, **kwargs)
+    
+
+class FoodImageViewSet(viewsets.ModelViewSet):
+    queryset = FoodImage.objects.all()
+    serializer_class = FoodImageUploadSerializer
+    permission_classes = [permissions.IsAdminUser]
 
 
 class CategoryViewSet(ModelViewSet):
