@@ -26,7 +26,6 @@ def dashboard_stats(request):
         )
 
         return Response({
-            "type": "admin",
             "total_orders": total_orders,
             "mostly_liked_foods": liked_reviews,
             "trending_foods": trending_foods,
@@ -49,7 +48,6 @@ def dashboard_stats(request):
     ]
 
     return Response({
-        "type": "user",
         "total_orders": total_orders,
         "total_spent": float(total_spent),
         "last_order_date": last_order_date,
