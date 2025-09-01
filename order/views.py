@@ -16,7 +16,7 @@ from rest_framework import status
 from sslcommerz_lib import SSLCOMMERZ 
 from django.conf import settings as main_settings
 from django.http import HttpResponseRedirect
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny
 
 
