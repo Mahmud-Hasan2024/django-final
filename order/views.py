@@ -4,7 +4,7 @@ from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from order.serializers import CartSerializer, CartItemSerializer, AddCartItemSerializer, UpdateCartItemSerializer, EmptySerializer, CreateOrderSerializer, UpdateOrderSerializer, OrderSerializer
-from order.models import Cart, CartItem, Order
+from order.models import Cart, CartItem, Order, OrderItem
 from order.services import OrderService
 from users.permissions import IsAuthenticatedAndActive
 from rest_framework import serializers
@@ -18,6 +18,7 @@ from django.conf import settings as main_settings
 from django.http import HttpResponseRedirect
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny
+from rest_framework.views import APIView
 
 
 # Create your views here.
@@ -211,3 +212,14 @@ def payment_fail(request):
             pass
 
     return HttpResponseRedirect(f"{main_settings.FRONTEND_URL}/dashboard/orders/")
+
+
+
+class HasOrderedProduct(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request, product_id):
+        user = request.user
+        has_ordered = OrderItem.objects.filter(
+            order__user=user, product_id=product_id).exists()
+        return Response({"hasOrdered": has_ordered})
