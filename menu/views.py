@@ -11,6 +11,8 @@ from api.permissions import IsAdminOrReadOnly
 from rest_framework import viewsets, permissions
 from menu.models import FoodImage
 from menu.serializers import FoodImageUploadSerializer
+from rest_framework.decorators import action
+from rest_framework.response import Response
 
 # Create your views here.
 
@@ -38,6 +40,19 @@ class FoodItemViewSet(ModelViewSet):
     )
     def create(self, request, *args, **kwargs):
         return super().create(request, *args, **kwargs)
+
+    @action(detail=False, methods=['get'], url_path='special', url_name='special')
+    def special_foods(self, request):
+        special_items = self.get_queryset().filter(is_special=True)
+        serializer = self.get_serializer(special_items, many=True)
+        return Response(serializer.data)
+
+    @action(detail=False, methods=['get'], url_path='discounted', url_name='discounted')
+    def discounted_foods(self, request):
+        discounted_items = self.get_queryset().filter(discount_price__isnull=False)
+        serializer = self.get_serializer(discounted_items, many=True)
+        return Response(serializer.data)
+
     
 
 class FoodImageViewSet(viewsets.ModelViewSet):
