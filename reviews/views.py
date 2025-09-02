@@ -12,8 +12,8 @@ class ReviewViewSet(ModelViewSet):
     def get_queryset(self):
         food_pk = self.kwargs.get('food_pk')
         if food_pk:
-            return Review.objects.filter(food_id=food_pk)
-        return Review.objects.filter(user=self.request.user)
+            return Review.objects.filter(food_id=food_pk).select_related('user')
+        return Review.objects.filter(user=self.request.user).select_related('user')
     
     def perform_create(self, serializer):
         food_id = self.kwargs.get('food_pk')
