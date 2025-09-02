@@ -1,13 +1,16 @@
 from rest_framework import serializers
 from reviews.models import Review
-from django.conf import settings
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
 
 class SimpleUserSerializer(serializers.ModelSerializer):
     name = serializers.ReadOnlyField(source='get_full_name')
 
     class Meta:
-        model = settings.AUTH_USER_MODEL
+        model = User
         fields = ['id', 'name']
+
 
 
 class ReviewSerializer(serializers.ModelSerializer):

@@ -12,7 +12,9 @@ class Review(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        unique_together = [['user', 'food']]
+        constraints = [
+            models.UniqueConstraint(fields=['user', 'food'], name='unique_user_food_review')
+        ]
         ordering = ['-id']
 
     def __str__(self):
