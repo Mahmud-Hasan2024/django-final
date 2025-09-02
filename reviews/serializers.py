@@ -4,9 +4,5 @@ from reviews.models import Review
 class ReviewSerializer(serializers.ModelSerializer):
     class Meta:
         model = Review
-        fields = ['id', 'user', 'food', 'rating', 'comment', 'created_at']
-        read_only_fields = ['food', 'user', 'created_at']
-
-    def create(self, validated_data):
-        validated_data['user'] = self.context['request'].user
-        return super().create(validated_data)
+        fields = ['id', 'rating', 'comment', 'created_at']
+        read_only_fields = ['id', 'created_at']
