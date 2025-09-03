@@ -52,6 +52,13 @@ class FoodItemViewSet(ModelViewSet):
         discounted_items = self.get_queryset().filter(discount_price__isnull=False)
         serializer = self.get_serializer(discounted_items, many=True)
         return Response(serializer.data)
+    
+    @action(detail=False, methods=['get'], url_path='most-liked', url_name='most-liked')
+    def most_liked_foods(self, request):
+        queryset = self.get_queryset().annotate(total_reviews=Count('reviews')).filter(total_reviews__gt=0)
+        queryset = queryset.order_by('-total_reviews')[:10]
+        serializer = self.get_serializer(queryset, many=True)
+        return Response(serializer.data)
 
     
 
