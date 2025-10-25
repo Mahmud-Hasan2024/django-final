@@ -179,14 +179,20 @@ python manage.py test
 
 ---
 
+## Deployment
+
+For deployment instructions, refer to the [DEPLOYMENT.md](DEPLOYMENT.md) file.
+
+---
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
-## Author
+## 👨‍💻 Author
 
-**Mahmud Hasan**  
+See [About_Me](About_Author.md) for details about the author.
 
-Learn more about me in my [About Me](About_Author.md) file.
+---
