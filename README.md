@@ -4,6 +4,15 @@
 
 ---
 
+## 🌍 Live Links
+
+-   **Base API:** [byte-feast-resturant-django-rest-ap.vercel.app/api/v1/](byte-feast-resturant-django-rest-ap.vercel.app/api/v1/)
+    
+-   **Swagger Documentation:** [byte-feast-resturant-django-rest-ap.vercel.app/swagger/](byte-feast-resturant-django-rest-ap.vercel.app/swagger/)
+    
+
+---
+
 ## Table of Contents
 
 - [Features](#features)
