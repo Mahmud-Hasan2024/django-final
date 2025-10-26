@@ -193,6 +193,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 👨‍💻 Author
 
+**Mahamud Hasan**
+Northern University Bangladesh
+
 See [About_Me](About_Author.md) for details about the author.
 
 ---
