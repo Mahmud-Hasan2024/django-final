@@ -4,20 +4,21 @@
 
 ## 🌍 Live Links
 
--   **Base API:** [byte-feast-resturant-django-rest-ap.vercel.app/api/v1/](byte-feast-resturant-django-rest-ap.vercel.app/api/v1/)
-    
--   **Swagger Documentation:** [byte-feast-resturant-django-rest-ap.vercel.app/swagger/](byte-feast-resturant-django-rest-ap.vercel.app/swagger/)
-    
+- **Production:** [byte-feast-react-difzitpml-mahmud-hasans-projects-8504381b.vercel.app](https://byte-feast-react-difzitpml-mahmud-hasans-projects-8504381b.vercel.app)
+
+- **Base API:** [byte-feast-resturant-django-rest-ap.vercel.app/api/v1/](https://byte-feast-resturant-django-rest-ap.vercel.app/api/v1/)
+
+- **Swagger Documentation:** [byte-feast-resturant-django-rest-ap.vercel.app/swagger/](https://byte-feast-resturant-django-rest-ap.vercel.app/swagger/)
 
 ---
 
 ## 👤 Demo Accounts
 
-| Role | Email | Password |
-| --- | --- | --- |
-| Admin | `admin@gmail.com` | `kgb12345` |
-| Employer | `fojibo8094@aravites.com` | `kgb12345` |
-| Job Seeker | `doveb99651@besaies.com` | `kgb12345` |
+| Role       | Email                     | Password   |
+| ---------- | ------------------------- | ---------- |
+| Admin      | `admin@gmail.com`         | `kgb12345` |
+| Employer   | `fojibo8094@aravites.com` | `kgb12345` |
+| Job Seeker | `doveb99651@besaies.com`  | `kgb12345` |
 
 Use these credentials to log in and explore the API in Swagger or Postman.
 
@@ -41,15 +42,10 @@ POST /accounts/login/
 
 ## 🧠 Notes
 
--   Hosted on **Vercel**
-    
--   Backend powered by **Django + DRF + Djoser (JWT)**
-    
--   Database: **PostgreSQL (Production)**
-    
--   Payments: **SSLCommerz Sandbox (Configured)**
-    
--   Version: `v1` (Base URL: `/api/v1/`)
-    
+- Hosted on **Vercel**
+- Backend powered by **Django + DRF + Djoser (JWT)**
+- Database: **PostgreSQL (Production)**
+- Payments: **SSLCommerz Sandbox (Configured)**
+- Version: `v1` (Base URL: `/api/v1/`)
 
 ---
