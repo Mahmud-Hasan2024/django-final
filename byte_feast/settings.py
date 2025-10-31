@@ -116,7 +116,10 @@ DATABASES = {
         'USER': config('user'),
         'PASSWORD': config('password'),
         'HOST': config('host'),
-        'PORT': config('port')
+        'PORT': config('port'),
+        'OPTIONS': {
+            'sslmode': 'require'
+        }
     }
 }
 

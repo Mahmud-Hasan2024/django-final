@@ -1,14 +1,19 @@
 {
-    "builds": [{
+  "builds": [
+    {
       "src": "byte_feast/wsgi.py",
       "use": "@vercel/python",
-      "config": { "maxLambdaSize": "15mb", "runtime": "python3.11.3" }
-    }],
-    "routes": [
-      {
-        "src": "/(.*)",
-        "dest": "byte_feast/wsgi.py"
+      "config": {
+        "maxLambdaSize": "15mb",
+        "runtime": "python3.11"
       }
-    ]
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "byte_feast/wsgi.py"
+    }
+  ],
+  "buildCommand": "python manage.py migrate --noinput && python manage.py collectstatic --noinput"
 }
-
