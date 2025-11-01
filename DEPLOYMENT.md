@@ -4,11 +4,11 @@
 
 ## 🌍 Live Links
 
-- **Production:** [byte-feast-react-difzitpml-mahmud-hasans-projects-8504381b.vercel.app](https://byte-feast-react-difzitpml-mahmud-hasans-projects-8504381b.vercel.app)
+- **Production:** [(https://byte-feast-react-w8qi.vercel.app/)](https://byte-feast-react-w8qi.vercel.app/)
 
-- **Base API:** [byte-feast-resturant-django-rest-ap.vercel.app/api/v1/](https://byte-feast-resturant-django-rest-ap.vercel.app/api/v1/)
+- **Base API:** [(https://byte-feast-resturant-django-rest-ap.vercel.app/api/v1/)](https://byte-feast-resturant-django-rest-ap.vercel.app/api/v1/)
 
-- **Swagger Documentation:** [byte-feast-resturant-django-rest-ap.vercel.app/swagger/](https://byte-feast-resturant-django-rest-ap.vercel.app/swagger/)
+- **Swagger Documentation:** [(https://byte-feast-resturant-django-rest-ap.vercel.app/swagger/)](https://byte-feast-resturant-django-rest-ap.vercel.app/swagger/)
 
 ---
 

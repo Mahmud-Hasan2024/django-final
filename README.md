@@ -6,7 +6,7 @@
 
 ## 🌍 Live Links
 
-- **Production:** [byte-feast-react-difzitpml-mahmud-hasans-projects-8504381b.vercel.app](https://byte-feast-react-difzitpml-mahmud-hasans-projects-8504381b.vercel.app)
+- **Production:** [byte-feast-react-w8qi.vercel.app](https://byte-feast-react-w8qi.vercel.app/)
 
 - **Base API:** [byte-feast-resturant-django-rest-ap.vercel.app/api/v1/](https://byte-feast-resturant-django-rest-ap.vercel.app/api/v1/)
 
